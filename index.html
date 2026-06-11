@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Kokandiy // Good Ideas Tracker</title>
+    <!-- Tailwind CSS for structural layout -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Oswald for the tall, condensed font; Share Tech Mono for the digital numbers -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #03060a;
+        }
+        .font-panel {
+            font-family: 'Oswald', sans-serif;
+        }
+        .font-digits {
+            font-family: 'Share Tech Mono', monospace;
+        }
+        
+        /* Exact color match for the intense Cyan UI lines & text */
+        .cyan-glow-text {
+            color: #00ffeb;
+            text-shadow: 0 0 8px rgba(0, 255, 235, 0.9), 0 0 20px rgba(0, 255, 235, 0.4);
+        }
+        
+        /* Exact color match for the Lego Yellow text & active digits */
+        .yellow-glow-text {
+            color: #ffea00;
+            text-shadow: 0 0 10px rgba(255, 234, 0, 0.9), 0 0 20px rgba(255, 234, 0, 0.5);
+        }
+
+        /* The dim, unlit background segments visible on the digital screen */
+        .dim-digit {
+            color: #111b29;
+            text-shadow: 0 0 1px rgba(17, 27, 41, 0.5);
+        }
+
+        /* CRT/Screen scanline overlay to mirror the texture of the photo */
+        .screen-texture {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+            background-size: 100% 4px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* Sci-Fi Chamfered (Cut) Corners using exact coordinate polygons */
+        .chamfer-outer-main { clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px); }
+        .chamfer-inner-main { clip-path: polygon(17px 0, calc(100% - 17px) 0, 100% 17px, 100% calc(100% - 17px), calc(100% - 17px) 100%, 17px 100%, 0 calc(100% - 17px), 0 17px); }
+        .chamfer-outer-row  { clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px); }
+        .chamfer-inner-row  { clip-path: polygon(13px 0, calc(100% - 13px) 0, 100% 13px, 100% calc(100% - 13px), calc(100% - 13px) 100%, 13px 100%, 0 calc(100% - 13px), 0 13px); }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4 overflow-hidden select-none">
+
+    <!-- Ambient background texture to match the cinematic photo environment -->
+    <div class="screen-texture"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(14,26,46,0.45)_0%,rgba(3,6,10,1)_80%)] z-0"></div>
+
+    <!-- MAIN TRACKER DEVICE -->
+    <div class="relative z-20 w-full max-w-lg p-6 mt-4">
+        
+        <!-- Background Chamfer Wrapper (Main Frame Glow) -->
+        <div class="absolute inset-0 filter drop-shadow-[0_0_8px_rgba(0,255,235,0.5)] drop-shadow-[0_0_15px_rgba(0,255,235,0.2)]">
+            <div class="absolute inset-0 bg-[#00ffeb] chamfer-outer-main">
+                <div class="absolute inset-[3px] bg-[#060a10] chamfer-inner-main" style="box-shadow: inset 0 0 20px rgba(0, 255, 235, 0.15);"></div>
+            </div>
+        </div>
+
+        <!-- Foreground Interface Layout -->
+        <div class="relative z-10">
+            <!-- TOP HEADER: GOOD IDEAS TRACKER -->
+            <div class="w-full text-center border-b-2 border-[#00ffeb]/30 pb-4 mb-6">
+                <h1 class="text-2xl font-bold tracking-[0.2em] cyan-glow-text font-panel uppercase">
+                    GOOD IDEAS TRACKER
+                </h1>
+            </div>
+
+            <!-- ROW 1: AL-KOKANDIY BOX -->
+            <div class="relative w-full px-4 py-5 mb-6">
+                <!-- Row Background Chamfer -->
+                <div class="absolute inset-0 filter drop-shadow-[0_0_5px_rgba(0,255,235,0.4)]">
+                    <div class="absolute inset-0 bg-[#00ffeb] chamfer-outer-row">
+                        <div class="absolute inset-[2px] bg-[#04070c] chamfer-inner-row"></div>
+                    </div>
+                </div>
+                <!-- Border-cutting Label (Using main panel bg color to blend break seamlessly) -->
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#060a10] px-4 z-10">
+                    <span class="text-xl font-bold tracking-widest yellow-glow-text font-panel uppercase">
+                        AL-KOKANDIY
+                    </span>
+                </div>
+                <!-- Digits: Match 05,678,483 exactly with dim leading zero -->
+                <div class="relative z-10 text-center font-digits text-5xl md:text-6xl tracking-wide pt-2">
+                    <span class="dim-digit">0</span><span class="yellow-glow-text">5,678,483</span>
+                </div>
+            </div>
+
+            <!-- ROW 2: EVERYONE ELSE BOX -->
+            <div class="relative w-full px-4 py-5 mb-4">
+                <!-- Row Background Chamfer -->
+                <div class="absolute inset-0 filter drop-shadow-[0_0_5px_rgba(0,255,235,0.4)]">
+                    <div class="absolute inset-0 bg-[#00ffeb] chamfer-outer-row">
+                        <div class="absolute inset-[2px] bg-[#04070c] chamfer-inner-row"></div>
+                    </div>
+                </div>
+                <!-- Border-cutting Label -->
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#060a10] px-4 z-10">
+                    <span class="text-xl font-bold tracking-widest yellow-glow-text font-panel uppercase">
+                        EVERYONE ELSE
+                    </span>
+                </div>
+                <!-- Digits: Every digit dim except the final active yellow 0 -->
+                <div class="relative z-10 text-center font-digits text-5xl md:text-6xl tracking-wide pt-2">
+                    <span class="dim-digit">00,000,00</span><span class="yellow-glow-text">0</span>
+                </div>
+            </div>
+
+            <!-- FOOTER METADATA -->
+            <div class="w-full text-center pt-2">
+                <span class="text-xs font-bold tracking-[0.15em] cyan-glow-text font-panel uppercase">
+                    LAST UPDATED: NOW
+                </span>
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+</html>
